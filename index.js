@@ -297,15 +297,23 @@ function counterMaker() {
  * etc
 */
 function counterMakerWithLimit(maxValue) {
-    let count = 0;
-    function counter(){
-      for(let i=0; i<=maxValue; i++)
-      if (i >= maxValue){
-        return count++;
+    var count = -1;
+    return function(){
+      if (count < maxValue){
+        return count += 1;
       }
-      }
-  return counter;
-} 
+      // else{
+      return count = 0;
+      // }
+  }
+};
+
+// let count = 0;
+// return function counter(){
+//   if (count > max) count = 0;
+//   return count++;
+//   }
+// };
 
 
 //  let count = 0;
@@ -326,9 +334,7 @@ function counterMakerWithLimit(maxValue) {
 //     //  count = 0
 //     return count++
 //    }
-//    else{
-//      count = 0;
-//      return count;
+
 //    }
 //  }
 //  return counter;
