@@ -48,8 +48,9 @@ function processFirstItem(stringList, callback) {
  * [2] Invoking `processLength` passing `[]` and `(num) => "There are " + num`,
  * should return "There are 0".
 */
-function processLength(/* CODE HERE */) {
+function processLength(list, callback) {
   /* CODE HERE */
+  return callback(list.length);
 }
 
 /**
@@ -66,8 +67,9 @@ function processLength(/* CODE HERE */) {
  * Invoking `processLastItem` passing `['foo', 'bar']` and `(str) => str + str`,
  * should return 'barbar'.
 */
-function processLastItem(/* CODE HERE */) {
-  /* CODE HERE */
+function processLastItem(stringList, callback){ 
+let item = stringList[stringList.length-1];
+return callback(item);
 }
 
 /**
@@ -87,8 +89,9 @@ function processLastItem(/* CODE HERE */) {
  * [2] Invoking `processSum` passing `[]` and `(num) => num + 1000`,
  * should return 1000.
 */
-function processSum(/* CODE HERE */) {
-  /* CODE HERE */
+function processSum(numberList, callback) {
+  let sum = numberList.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  return (callback(sum));
 }
 
 /**
@@ -135,8 +138,8 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  return callback(list.includes(item));
 }
 
 /**
@@ -271,7 +274,6 @@ function counterMaker() {
     return count++
   }
   return counter
-  // BROKEN CODE ENDS
 }
 
 /**
@@ -295,14 +297,55 @@ function counterMaker() {
  * etc
 */
 function counterMakerWithLimit(maxValue) {
-  let count = 0;
-  for (let i=0; i < maxValue; i++){
+    let count = 0;
     function counter(){
-      return count++
-    }
-  };
+      for(let i=0; i<=maxValue; i++)
+      if (i >= maxValue){
+        return count++;
+      }
+      }
   return counter;
-}
+} 
+
+
+//  let count = 0;
+//     function counter(){
+//       if(count > maxValue){
+//         count = 0;
+//         return count;
+//       }
+//       return count++;
+//     }
+//     return counter
+//   };
+
+
+//    let count = 0;
+//  function counter(){
+//    if (maxValue >= count){
+//     //  count = 0
+//     return count++
+//    }
+//    else{
+//      count = 0;
+//      return count;
+//    }
+//  }
+//  return counter;
+// }
+
+//   // let count = 0;
+  // function counter(){
+  //   for(let i=0; i<=maxValue; i++)
+  //   if (i === maxValue){
+  //     return count++
+  //   }
+  //   }
+  //   return counter;
+  // }
+  
+
+  
 
 /////////////// END OF CHALLENGE ///////////////
 /////////////// END OF CHALLENGE ///////////////
